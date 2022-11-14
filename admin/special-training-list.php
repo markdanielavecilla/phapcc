@@ -35,6 +35,7 @@
                             <th>Special Training ID</th>
                             <th>Special Training</th>
                             <th>Status</th>
+                            <th>User count</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             <td><?= $row['st_id'] ?></td>
                             <td><?= ucwords($row['special_training']) ?></td>
                             <td><?= ($row['status'] === 0) ? 'Active' : 'Inactive' ?></td>
+                            <td><?= $row['totalCount'] ?></td>
                             <td>
                                 <a href="./view-special-training.php?id=<?= $row['st_id'] ?>" class="btn btn-primary">Open</a>
                                 <a href="./edit-special-training.php?id=<?= $row['st_id'] ?>" class="btn btn-success">Edit</a>

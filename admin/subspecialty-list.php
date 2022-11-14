@@ -35,6 +35,7 @@
                             <th>Subspecialty ID</th>
                             <th>Subspecialty</th>
                             <th>Status</th>
+                            <th>User count</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             <td><?= $row['sub_id'] ?></td>
                             <td><?= ucwords($row['subspecialty']) ?></td>
                             <td><?= ($row['status'] === 0) ? 'Active' : 'Inactive' ?></td>
+                            <td><?= $row['totalCount'] ?></td>
                             <td>
                                 <a href="./view-subspecialty.php?id=<?= $row['sub_id'] ?>" class="btn btn-primary">Open</a>
                                 <a href="./edit-subspecialty.php?id=<?= $row['sub_id'] ?>" class="btn btn-success">Edit</a>

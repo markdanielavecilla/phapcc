@@ -35,6 +35,7 @@
                             <th>Category ID</th>
                             <th>Category</th>
                             <th>Status</th>
+                            <th>User count</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             <td><?= $row['catid'] ?></td>
                             <td><?= ucwords($row['category']) ?></td>
                             <td><?= ($row['status'] === 0) ? 'Active' : 'Inactive' ?></td>
+                            <td><?= $row['totalCount'] ?></td>
                             <td>
                                 <a href="./view-category.php?id=<?= $row['catid'] ?>" class="btn btn-primary">Open</a>
                                 <a href="./edit-category.php?id=<?= $row['catid'] ?>" class="btn btn-success">Edit</a>

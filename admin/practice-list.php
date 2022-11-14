@@ -35,6 +35,7 @@
                             <th>Practice ID</th>
                             <th>Practice</th>
                             <th>Status</th>
+                            <th>User count</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -46,6 +47,7 @@
                             <td><?= $row['practice_id'] ?></td>
                             <td><?= ucwords($row['practice']) ?></td>
                             <td><?= ($row['status'] === 0) ? 'Active' : 'Inactive' ?></td>
+                            <td><?= $row['totalCount'] ?></td>
                             <td>
                                 <a href="./view-practice.php?id=<?= $row['practice_id'] ?>" class="btn btn-primary">Open</a>
                                 <a href="./edit-practice.php?id=<?= $row['practice_id'] ?>" class="btn btn-success">Edit</a>
