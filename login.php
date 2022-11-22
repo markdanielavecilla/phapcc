@@ -6,26 +6,30 @@
     endif;
 ?>
 <form autocomplete="off" method="POST">
-    <div class="txt_field">
-        <input 
-            type="text" 
-            name="email"
-            placeholder="Email"
-            value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>"
-            autofocus
-        />
-        <br/>
-        <span class="blockquote-footer"><strong>Enter the email you used in creating the account</strong></span>
+    <div class="form-group">
+        <div class="txt_field">
+            <input 
+                type="text" 
+                name="email"
+                placeholder="Email"
+                value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>"
+                autofocus
+            />
+            <br/>
+            <span class="blockquote-footer"><strong>Enter the email you used in creating the account</strong></span>
+        </div>
     </div>
 
-    <div class="txt_field">
-        <input 
-            type="password"
-            name="password"
-            placeholder="Password"
-        />
-        <br/>
-        <span class="blockquote-footer"><strong>Enter the password you used in creating the account</strong></span>
+    <div class="form-group">
+        <div class="txt_field">
+            <input 
+                type="password"
+                name="password"
+                placeholder="Password"
+            />
+            <br/>
+            <span class="blockquote-footer"><strong>Enter the password you used in creating the account</strong></span>
+        </div>
     </div>
     <div class="pass">
         <a href="./forgotpassword.php">Forgot password?</a>
