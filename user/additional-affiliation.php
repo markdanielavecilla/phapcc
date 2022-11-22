@@ -62,30 +62,33 @@
                             <input 
                                 type="text"
                                 name="add_affiliation"
-                                class="form-control"
+                                class="form-control <?= $errAddAffiliation ? 'is-invalid' : '' ?>"
                                 placeholder="Hospital affiliation"
                             />
                             <label for="hospital_affiliation">Hospital affiliation</label>
+                            <span class="invalid-feedback"><?= $errAddAffiliation ?></span>
                         </div>
 
                         <div class="form-floating mt-2 mb-2">
                             <input 
                                 type="number"
                                 name="add_contact_number"
-                                class="form-control"
+                                class="form-control <?= $errAddContact ? 'is-invalid' : '' ?>"
                                 placeholder="Contact number"
                             />
                             <label for="contact_number">Contact number</label>
+                            <span class="invalid-feedback"><?= $errAddContact ?></span>
                         </div>
 
                         <div class="form-floating mt-2 mb-2">
                             <input 
                                 type="text"
                                 name="add_landline"
-                                class="form-control"
+                                class="form-control <?= $errAddLandline ? 'is-invalid' : '' ?>"
                                 placeholder="Landline number"
                             />
                             <label for="add_landline">Landline number</label>
+                            <span class="invalid-feedback"><?= $errAddLandline ?></span>
                         </div>
 
                         <button 

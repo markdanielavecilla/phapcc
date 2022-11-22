@@ -2,6 +2,7 @@
     session_start();
     require_once "../connection/connection.php";
     $USER_ID = $_SESSION['user_id'];
+
     // ADDITIONAL AFFILIATION
     $errors = array();
     $errAddAffiliation = $errAddContact = $errAddLandline = "";
@@ -17,7 +18,11 @@
         $addContactNumber = test_input($_POST['add_contact_number']);
         $addLandline = test_input($_POST['add_landline']);
         
-        if(isset($addAffiliation)) {
+        if(empty($addAffiliation)) {
+            $errAddAffiliation = "This field is required";
+            $flag = false;
+            $errors[] = $errAddAffiliation;
+        } else {
             if(!preg_match($VALIDATE_NAME, $addAffiliation)) {
                 $flag = false;
                 $errAddAffiliation = "Invalid hospital affiliation name";
@@ -25,7 +30,11 @@
             }
         }
 
-        if(isset($addContactNumber)) {
+        if(empty($addContactNumber)) {
+            $errAddContact = "This field is required";
+            $flag = false;
+            $errors[] = $errAddContact;
+        } else {
             if(!preg_match($VALIDATE_NUMBER, $addContactNumber)) {
                 $flag = false;
                 $errAddContact = "Invalid Contact number";
@@ -33,7 +42,11 @@
             }
         }
 
-        if(isset($addLandline)) {
+        if(empty($addLandline)) {
+            $errAddLandline = "This field is required";
+            $flag = false;
+            $errors[] = $errAddLandline;
+        } else {
             if(!preg_match($VALIDATE_LANDLINE, $addLandline)) {
                 $flag = false;
                 $errAddLandline = "Invalid landline number";
@@ -41,19 +54,22 @@
             }
         }
 
-        if($flag == false && count($errors) > 0) {
-            $_SESSION['message'] = "<div class='alert alert danger'>Error</div>";
+        if($flag === false && count($errors) > 0) {
+            $_SESSION['client_message'] = "<div class='alert alert-danger'>Failed to insert to data. Please check all fields</div>";
+            return;
         } else {
             $conn->autocommit(FALSE);
 
-            $stmt = $conn->prepare("INSERT INTO tbl_extrainformation (doctors_id, hospital_aff, contact, landline, status) VALUES (?, ?, ?, ?)");
+            $stmt = $conn->prepare("INSERT INTO tbl_extrainformation (doctors_id, hospital_aff, contact, landline, status) VALUES (?, ?, ?, ?, ?)");
             $stmt->bind_param("isssi", $USER_ID, $addAffiliation, $addContactNumber, $addLandline, $defaultStatus);
             $stmt->execute();
 
             if(!$conn->commit()) {
-                $_SESSION['message'] = "<div class='alert alert danger'>Error</div>";
+                $_SESSION[' client_message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
+                return;
             } else {
                 header("Location: ../user/profile.php?id".$USER_ID);
+                return;
             }
         }
     }
