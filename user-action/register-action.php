@@ -126,6 +126,8 @@
                 $errPassword = "Minimum password is 6";
                 $flag = false;
                 $errors[] = $errPassword;
+            } else {
+                $encryptPassword = password_hash($password, PASSWORD_DEFAULT);
             }
         }
 
@@ -157,7 +159,7 @@
                  * tbl_credentials
                  */
                 $stmt = $conn->prepare("INSERT INTO tbl_credentials (email, user_password, secret_question, secret_answer, user_role, user_agreement) VALUES (?, ?, ?, ? ,?, ?)");
-                $stmt->bind_param("sssssi", $email, $password, $secretQuestion, $secretAnswer, $ROLE, $agreement);
+                $stmt->bind_param("sssssi", $email, $encryptPassword, $secretQuestion, $secretAnswer, $ROLE, $agreement);
                 $stmt->execute();
                 $stmt->close();
 
@@ -193,16 +195,6 @@
                 $stmt->bind_param("i", $userLastId);
                 $stmt->execute();
                 $stmt->close();
-
-                // $stmt = $conn->prepare("INSERT INTO tbl_contact_person (dr_id) VALUES (?)");
-                // $stmt->bind_param("i", $userLastId);
-                // $stmt->execute();
-                // $stmt->close();
-
-                // $stmt = $conn->prepare("INSERT INTO tbl_beneficiaries (dr_id) VALUES (?)");
-                // $stmt->bind_param("i", $userLastId);
-                // $stmt->execute();
-                // $stmt->close();
 
                 // others
                 $stmt = $conn->prepare("INSERT INTO tbl_other_subspecialty (u_id) VALUES (?)");
@@ -247,8 +239,8 @@
                 } else {
                     echo "<div class='alert alert-success'>Registration successful</div>";
                     $_POST = array();
+                    echo "<script>window.location.href='http://localhost/project/phaproject/index.php'</script>";
                 }
-
             }
         } else {
             echo "<div class='alert alert-danger'>Failed to register</div>";
