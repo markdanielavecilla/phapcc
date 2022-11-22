@@ -239,7 +239,7 @@
                 } else {
                     echo "<div class='alert alert-success'>Registration successful</div>";
                     $_POST = array();
-                    echo "<script>window.location.href='http://localhost/project/phaproject/index.php'</script>";
+                    echo "<script>window.location.href='index.php'</script>";
                 }
             }
         } else {

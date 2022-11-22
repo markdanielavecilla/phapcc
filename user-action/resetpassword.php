@@ -14,6 +14,6 @@
         unset($_SESSION['user_answer']);
         header("Location: ./index.php");
     } else {
-        echo "<script>window.location.href='http://localhost/project/phaproject/index.php'</script>";
+        echo "<script>window.location.href='index.php'</script>";
     }
 ?>
