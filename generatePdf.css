@@ -1,0 +1,171 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+table,
+td {
+    border: 1px solid #000;
+}
+
+table {
+    max-width: 100%;
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+table .table_1 {
+    width: 100%;
+}
+
+table .table_1 img {
+    max-width: 150px;
+    max-height: 250px;
+    object-fit: cover;
+    display: block;
+}
+
+table .table_2 {
+    width: 100%;
+}
+
+table .table_2 th {
+    padding: 5px 0;
+}
+
+table .table_2 td {
+    text-align: center;
+}
+
+table .table_3 td {
+    text-align: center;
+}
+
+table .table_4 td {
+    text-align: center;
+}
+
+table .table_5 td {
+    text-align: center;
+}
+
+table .table_6 td {
+    text-align: center;
+    vertical-align: top;
+    padding: 0 5px;
+}
+
+table .table_6 td ul li {
+    text-align: left;
+    margin-left: 0.1em;
+    /* padding: 0.5em 0.5em; */
+    /* border-left: 4px solid #ff8bb3; */
+}
+
+table .table_7 td {
+    width: 50%;
+}
+
+table .table_7 td ul li {
+    padding: 0.1em 0;
+}
+
+table .table_8 td {
+    text-align: center;
+}
+
+table .table_9 td {
+    text-align: center;
+}
+
+/* table ul {
+    list-style: none;
+}
+
+table ul li {
+    margin: 5px 0;
+}
+
+table .name {
+    text-align: bottom;
+    padding: 40px;
+}
+
+table .name h3 {
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-weight: 600;
+}
+
+table .contentBox {
+    position: relative;
+} */
+
+/* .container {
+    position: relative;
+    width: 90%;
+    min-width: 1000px;
+    background: #fff;
+    margin: 50px;
+    box-shadow: 0 50px 70px rgba(0, 0, 0, 0.1);
+    border-left: 50px solid #fff;
+    border-right: 50px solid #fff;
+}
+
+.container table {
+    width: 100%;
+    border: 1px solid #000;
+}
+
+.container table img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.container table .profileText {
+    position: relative;
+    padding: 40px;
+    display: flex;
+    text-align: center;
+}
+
+.container table .profileText h3 {
+    font-size: 3em;
+    letter-spacing: 0.1em;
+    line-height: 1.2em;
+    font-weight: 600;
+    color: #333;
+}
+
+.container .contentBox {
+    position: relative;
+    padding: 0 40px 40px;
+}
+
+.container .contentBox h3 {
+    border-left: 4px solid #ff8bb3;
+    padding: 10px;
+    line-height: 1em;
+    font-weight: 600;
+    color: #333;
+    letter-spacing: 0.1em;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.container .contentBox ul {
+    position: relative;
+    margin: 10px 0;
+}
+
+.container .contentBox ul li {
+    list-style: none;
+    margin: 10px 10px;
+    line-height: 1em;
+    color: #333;
+    display: flex;
+} */

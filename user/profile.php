@@ -37,14 +37,14 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="./profile.php?id=<?= $_GET['id'] ?>" class="nav-link">Profile</a>
+                        <a href="./profile.php?id=<?= $_SESSION['user_id'] ?>" class="nav-link">Profile</a>
                     </li>
-                    <li class="nav-item"><a href="./download.php?id=<?= $_GET['id'] ?>" class="nav-link">Download</a></li>
+                    <li class="nav-item"><a href="../generate-pdf.php?id=<?= $_SESSION['user_id'] ?>" class="nav-link">Download</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="./change-password.php?id=<?= $_GET['id'] ?>" class="dropdown-item">Change password</a>
+                                <a href="./change-password.php?id=<?= $_SESSION['user_id'] ?>" class="dropdown-item">Change password</a>
                             </li>
                             <li>
                                 <a href="./logout.php" class="dropdown-item">Logout</a>

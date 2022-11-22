@@ -212,7 +212,7 @@
              */
 
             // GET THE LIST OF SUBSPECIALTY
-            if(!empty($_POST['subspecialty'])) {
+            // if(!empty($_POST['subspecialty'])) {
                 $subStmt = $conn->prepare("SELECT * FROM tbl_hospital_subspecialty WHERE information_id = ?");
                 $subStmt->bind_param("i", $USER_ID);
                 $subStmt->execute();
@@ -239,7 +239,7 @@
                         $stmt->execute();
                     }
                 }
-            }
+            // }
             // END OF SUBSPECIALTY UPDATE
 
             /**
