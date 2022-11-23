@@ -37,7 +37,14 @@
     </section>
     <main>
         <div class="container my-5">
-            <h1><?= ucwords($row['practice']) ?></h1>
+            <h2>
+                <?= ucwords($row['practice']) ?>
+                <span>
+                    <a href="./practice-list.php" class="btn btn-outline-danger float-end">
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </a>
+                </span>
+            </h2>
             <hr/>
             <div class="row">
                 <div class="col">
