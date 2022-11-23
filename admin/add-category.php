@@ -25,14 +25,22 @@
         <div class="container my-5">
              <?php
                 if(isset($_SESSION['message'])) :
-                    echo "<div class='alert alert-success'>".$_SESSION['message']."</div>";
+                    echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 endif;
             ?>
             <form method="POST" autocomplete="off">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
-                        <input type="text" class="form-control my-3" autofocus name="category-title" placeholder="Category">
+                        <input 
+                            type="text" 
+                            class="form-control my-3 <?= $errCat ? 'is-invalid' : '' ?>" 
+                            autofocus 
+                            name="category-title" 
+                            placeholder="Category"
+                            value="<?= isset($_POST['category-title']) ? $_POST['category-title'] : '' ?>"
+                        >
+                        <span class="invalid-feedback"><?= $errCat ?></span>
                         <button name="addCategory" class="btn btn-primary float-end">Add</button>
                     </div>
                 </div>

@@ -25,14 +25,22 @@
         <div class="container my-5">
              <?php
                 if(isset($_SESSION['message'])) :
-                    echo "<div class='alert alert-success'>".$_SESSION['message']."</div>";
+                    echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 endif;
             ?>
             <form method="POST" autocomplete="off">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
-                        <input type="text" class="form-control my-3" autofocus name="committee-title" placeholder="Committee">
+                        <input 
+                            type="text" 
+                            class="form-control my-3 <?= $errComm ? 'is-invalid':'' ?>" 
+                            autofocus 
+                            name="committee-title" 
+                            placeholder="Committee"
+                            value="<?= isset($_POST['committee-title']) ? $_POST['committee-title'] : '' ?>"
+                        >
+                        <span class="invalid-feedback"><?= $errComm ?></span>
                         <button name="addCommittee" class="btn btn-primary float-end">Add</button>
                     </div>
                 </div>

@@ -49,9 +49,9 @@
                             <td><?= ($row['status'] === 0) ? 'Active' : 'Inactive' ?></td>
                             <td><?= $row['totalCount'] ?></td>
                             <td>
-                                <a href="./view-council.php?id=<?= $row['council_id'] ?>" class="btn btn-primary">Open</a>
-                                <a href="./edit-council.php?id=<?= $row['council_id'] ?>" class="btn btn-success">Edit</a>
-                                <a href="./delete-council.php?id=<?= $row['council_id'] ?>" class="btn btn-danger">Delete</a>
+                                <a href="./view-council.php?id=<?= $row['council_id'] ?>" class="btn btn-primary btn-sm">Open</a>
+                                <a href="./edit-council.php?id=<?= $row['council_id'] ?>" class="btn btn-success btn-sm">Edit</a>
+                                <a href="./delete-council.php?id=<?= $row['council_id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                             </td>
                         </tr>
                         <?php

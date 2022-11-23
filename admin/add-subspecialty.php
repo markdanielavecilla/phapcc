@@ -25,14 +25,22 @@
         <div class="container my-5">
              <?php
                 if(isset($_SESSION['message'])) :
-                    echo "<div class='alert alert-success'>".$_SESSION['message']."</div>";
+                    echo $_SESSION['message'];
                     unset($_SESSION['message']);
                 endif;
             ?>
             <form method="POST" autocomplete="off">
                 <div class="row">
                     <div class="col-md-6 mx-auto">
-                        <input type="text" class="form-control my-3" autofocus name="subspecialty-title" placeholder="Subspecialty">
+                        <input 
+                            type="text" 
+                            class="form-control my-3 <?= $errSub ? 'is-invalid' : '' ?>" 
+                            autofocus 
+                            name="subspecialty-title"
+                            placeholder="Subspecialty"
+                            value="<?= isset($_POST['subspecialty-title']) ? $_POST['subspecialty-title'] : '' ?>"
+                        >
+                        <span class="invalid-feedback"><?= $errSub ?></span>
                         <button name="addSubspecialty" class="btn btn-primary float-end">Add</button>
                     </div>
                 </div>

@@ -23,8 +23,7 @@
             }
 
         } else {
-            $_SESSION['message'] = "Invalid Login";
-            // header("Location: ./index.php");
+            $_SESSION['message'] = "Incorrect username or password";
         }
     }
 
