@@ -6,6 +6,15 @@
         $password = trim($_POST['password']);
 
         /**
+         * @desc Check if there is an input in email and password
+         */
+
+        if(empty($email) && empty($password)) {
+            $_SESSION['client_message'] = "<div class='alert alert-danger'>Incorrect email or password.</div>";
+            return;
+        }
+
+        /**
          * @desc Check email if exist and the password is correct
          */
         $stmt = $conn->prepare("SELECT id, email, user_password FROM tbl_credentials WHERE email = ?");
@@ -26,10 +35,10 @@
                 $user_id = $_SESSION['user_id'];
                 header("Location: ./user/profile.php?id=$user_id");
             } else {
-                $_SESSION['client_message'] = "<div class='alert alert-danger'>Email or Password is incorrect.</div>";
+                $_SESSION['client_message'] = "<div class='alert alert-danger'>Incorrect email or password.</div>";
             }
         } else {
-            $_SESSION['client_message'] = "<div class='alert alert-danger'>Email or Password is incorrect.</div>";
+            $_SESSION['client_message'] = "<div class='alert alert-danger'>Incorrect email or password.</div>";
         }   
     }
     $conn->close();

@@ -1,47 +1,55 @@
 <?php
     require_once "user-action/login-action.php";
-    if(isset($_SESSION['client_message'])) :
-        echo $_SESSION['client_message'];
-        unset($_SESSION['client_message']);
-    endif;
 ?>
-<form autocomplete="off" method="POST">
-    <div class="form-group">
-        <div class="txt_field">
-            <input 
-                type="text" 
-                name="email"
-                placeholder="Email"
-                value="<?= isset($_POST['email']) ? $_POST['email'] : '' ?>"
-                autofocus
-            />
-            <br/>
-            <span class="blockquote-footer"><strong>Enter the email you used in creating the account</strong></span>
-        </div>
-    </div>
 
-    <div class="form-group">
-        <div class="txt_field">
-            <input 
-                type="password"
-                name="password"
-                placeholder="Password"
-            />
-            <br/>
-            <span class="blockquote-footer"><strong>Enter the password you used in creating the account</strong></span>
-        </div>
+<div class="card p-3">
+    <div class="card-body">
+        <form method="post">
+            <?php
+                if(isset($_SESSION['client_message'])) :
+                    echo $_SESSION['client_message'];
+                    unset($_SESSION['client_message']);
+                endif;
+            ?>
+            <div class="form-group my-3">
+                <input 
+                    type="text" 
+                    name="email"
+                    class="form-control"
+                    placeholder="Email"
+                    autofocus
+                />
+                <span class="blockquote-footer">Enter the email you used in creating an account.</span>
+            </div>
+
+            <div class="form-group my-3">
+                <input 
+                    type="password" 
+                    name="password"
+                    class="form-control"
+                    placeholder="Password" 
+                />
+                <input 
+                    type="checkbox"
+                    class="mt-2" 
+                /> Show password
+                <br/>
+                <span class="blockquote-footer">Enter the password you used in creating an account.</span>
+            </div>
+            <div class="text-center mt-2">
+                <input 
+                    type="submit" 
+                    value="Login"
+                    name="login"
+                    class="body-btn my-3" 
+                />
+                <div>
+                    <span>
+                        <a href="./register.php">Sign up</a> <br/>
+                        <a href="./forgotpassword.php">Forgot password?</a>
+                    </span>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="pass">
-        <a href="./forgotpassword.php">Forgot password?</a>
-    </div>            
-    <input 
-        type="submit" 
-        value="Login" 
-        name="login"
-        class="body-btn"
-    />
-    
-    <div class="signup_link">
-        <a href="register.php">Sign up</a>
-    </div>
-</form>
+</div>

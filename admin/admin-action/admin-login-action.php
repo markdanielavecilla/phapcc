@@ -19,11 +19,11 @@
                 header("Location: ./dashboard.php");
 
             } else {
-                $_SESSION['message'] = "Incorrect username or password";
+                $_SESSION['message'] = "<div class='alert alert-danger'>Incorrect username or password</div>";
             }
 
         } else {
-            $_SESSION['message'] = "Incorrect username or password";
+            $_SESSION['message'] = "<div class='alert alert-danger'>Incorrect username or password</div";
         }
     }
 

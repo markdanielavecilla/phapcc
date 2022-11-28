@@ -69,6 +69,8 @@ nav:has(.nav-link) {
     padding: 1rem 1.5rem;
     border-radius: 10px;
     text-align: justify;
+    max-height: 100vh;
+    margin: auto;
 }
 
 .policy h1 {
