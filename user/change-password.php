@@ -73,11 +73,10 @@
                                 class="form-control <?= $errOp ? 'is-invalid' : '' ?>"
                                 style="box-shadow:none"
                                 name="old_password"
+                                id="old_password"
                                 placeholder="Old password"
                                 value="<?= isset($_POST['old_password']) ? $_POST['old_password'] : '' ?>"
                             />
-                            
-                            <span class="input-group-text" id="show_oPass"><i class="fa-solid fa-eye"></i></span>
                             <span class="invalid-feedback"><?= $errOp ?></span>
                         </div>
 
@@ -91,22 +90,26 @@
                                 placeholder="New password"
                                 value="<?= isset($_POST['new_password']) ? $_POST['new_password'] : '' ?>"
                             />
-                            <span class="input-group-text"><i class="fa-solid fa-eye"></i></span>
                             <span class="invalid-feedback"><?= $errNp ?></span>
                         </div>
 
                         <div class="input-group my-3">
                             <input 
                                 type="password"
-                                class="form-control <?= $errNp ? 'is-invalid' : '' ?>"
+                                class="form-control <?= $errRp ? 'is-invalid' : '' ?>"
                                 style="box-shadow:none"
                                 id="repeat_password"
                                 name="repeat_password"
                                 placeholder="Repeat password"
                                 value="<?= isset($_POST['repeat_password']) ? $_POST['repeat_password'] : '' ?>"
                             />
-                            <span class="input-group-text"><i class="fa-solid fa-eye"></i></span>
+                            <span class="invalid-feedback"><?= $errRp ?></span>
                         </div>
+                        <input 
+                            type="checkbox" 
+                            id="show_password"
+                            name="show_password" 
+                        /> Show Password
 
                         <button class="btn btn-success float-end" name="savePassword">Submit</button>
                     </div>
@@ -115,5 +118,24 @@
         </form>
     </section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const old_password = document.getElementById('old_password')
+        const new_password = document.getElementById('new_password')
+        const repeat_password = document.getElementById('repeat_password')
+        const show_password = document.getElementById('show_password')
+
+        show_password.addEventListener('change', () => {
+            if(show_password.checked) {
+                old_password.setAttribute('type', 'text')
+                new_password.setAttribute('type', 'text')
+                repeat_password.setAttribute('type', 'text')
+            } else {
+                old_password.setAttribute('type', 'password')
+                new_password.setAttribute('type', 'password')
+                repeat_password.setAttribute('type', 'password')
+            }
+        })
+        
+    </script>
 </body>
 </html>

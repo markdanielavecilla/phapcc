@@ -32,12 +32,24 @@
                 $errFellow = "Invalid fellow year";
                 $errors[] = $errFellow;
             }
+
+            if($fellow > date("Y")) {
+                $flag = false;
+                $errFellow = "Year input must not be greater than the current year";
+                $errors[] = $errFellow;
+            }
         }
 
         if(isset($lifeFellow)) {
             if(!preg_match($VALID_YEAR, $lifeFellow)) {
                 $flag = false;
                 $errLifefellow = "Invalid Life fellow year";
+                $errors[] = $errLifefellow;
+            }
+
+            if($lifeFellow > date("Y")) {
+                $flag = false;
+                $errLifefellow = "Year input must not be greater than the current year";
                 $errors[] = $errLifefellow;
             }
         }
@@ -48,12 +60,24 @@
                 $errDiplomate = "Invalid Diplomate year";
                 $errors[] = $errDiplomate;
             }
+
+            if($diplomate > date("Y")) {
+                $flag = false;
+                $errDiplomate = "Year input must not be greater than the current year";
+                $errors[] = $errDiplomate;
+            }
         }
 
         if(isset($lifeMember)) {
             if(!preg_match($VALID_YEAR, $lifeMember)) {
                 $flag = false; 
                 $errLifemember = "Invalid Life member year";
+                $errors[] = $errLifemember;
+            }
+
+            if($lifeMember > date("Y")) {
+                $flag = false;
+                $errLifemember = "Year input must not be greater than the current year";
                 $errors[] = $errLifemember;
             }
         }
@@ -64,12 +88,24 @@
                 $errAssociatefellow = "Invalid Associate fellow year";
                 $errors[] = $errAssociatefellow;
             }
+
+            if($associateFellow > date("Y")) {
+                $flag = false;
+                $errAssociatefellow = "Year input must not be greater than the current year";
+                $errors[] = $errAssociatefellow;
+            }
         }
 
         if(isset($associate)) {
             if(!preg_match($VALID_YEAR, $associate)) {
                 $flag = false;
                 $errAssociate = "Invalid Associate Year";
+                $errors[] = $errAssociate;
+            }
+
+            if($associate > date("Y")) {
+                $flag = false;
+                $errAssociate = "Year input must not be greater than the current year";
                 $errors[] = $errAssociate;
             }
         }

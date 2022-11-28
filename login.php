@@ -26,12 +26,14 @@
                 <input 
                     type="password" 
                     name="password"
+                    id="password"
                     class="form-control"
                     placeholder="Password" 
                 />
                 <input 
                     type="checkbox"
-                    class="mt-2" 
+                    class="mt-2"
+                    id="show-password" 
                 /> Show password
                 <br/>
                 <span class="blockquote-footer">Enter the password you used in creating an account.</span>
@@ -53,3 +55,15 @@
         </form>
     </div>
 </div>
+
+<script>
+    const showPassword = document.getElementById('show-password')
+    const passwordInput = document.getElementById('password');
+    showPassword.addEventListener('change', () => {
+        if(showPassword.checked) {
+            passwordInput.setAttribute('type', 'text');
+        } else {
+            passwordInput.setAttribute('type', 'password');
+        }
+    })
+</script>

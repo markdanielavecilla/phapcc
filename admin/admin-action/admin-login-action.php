@@ -5,6 +5,15 @@
         $username = $_POST['username'];
         $password = $_POST['password'];
 
+        /**
+         * @Desc Checks if there is an input on username and password
+         */
+
+        if(empty($username) && empty($password)) {
+            $_SESSION['message'] = "<div class='alert alert-danger'>Incorrect username or password</div>";
+            return;
+        }
+
         $stmt = $conn->prepare("SELECT * FROM tbl_admin WHERE username = ?");
         $stmt->bind_param("s", $username);
         $stmt->execute();
@@ -20,6 +29,7 @@
 
             } else {
                 $_SESSION['message'] = "<div class='alert alert-danger'>Incorrect username or password</div>";
+                return;
             }
 
         } else {

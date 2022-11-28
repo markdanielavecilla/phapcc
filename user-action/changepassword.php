@@ -17,7 +17,7 @@
     $stmt->close();
  
     // SET NEW PASSWORD
-    $errOp = $errNp = "";
+    $errOp = $errNp = $errRp = "";
     if(isset($_POST['savePassword'])) {
         $old_password = $conn->real_escape_string(trim($_POST['old_password']));
         if(!password_verify($old_password, $row['user_password'])) {
@@ -35,14 +35,14 @@
         }
 
         if($new_password === $old_password) {
-            $errNp = "Current password cannot be change while changing password.";
+            $errNp = "Old password cannot be use on new password.";
             $_SESSION['client_message'] = "<div class='alert alert-danger'>$errNp</div>";
             return;
         }
 
         if($new_password !== $repeat_password) {
-            $errNp = "New password doesn't match to the repeat password.";
-            $_SESSION['client_message'] = "<div class='alert alert-danger'>$errNp</div>";
+            $errRp = "New password doesn't match to the repeat password.";
+            $_SESSION['client_message'] = "<div class='alert alert-danger'>$errRp</div>";
             return;
         }
 

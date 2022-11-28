@@ -36,6 +36,7 @@
                                 placeholder="Username" 
                                 name="username" 
                                 class="form-control my-4 py-3"
+                                autofocus
                             />
                             <input 
                                 type="password" 
