@@ -12,7 +12,7 @@
     <title>Forgot Password</title>
 </head>
 <body>
-    <div class="bg">
+    <div>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a href="./index.php" class="navbar-brand">
@@ -47,5 +47,8 @@
             </form>
        </section>
     </div>
+    <?php
+        include "./footer.php";
+    ?>
 </body>
 </html>

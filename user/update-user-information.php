@@ -362,21 +362,14 @@
             </div>
        </form> 
     </section>
-    
-
+    <br/><br/><br/>
+    <?php
+        include "../footer.php";
+    ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js"></script>
     <script src="../js/age.js"></script>
     <script src="../js/image-preview.js"></script>
-    <!-- <script>
-        const form = document.querySelector('form')
-        form.addEventListener('submit', (e) => {
-            if(!form.checkValidity()) {
-                e.preventDefault()
-            }
-            form.classList.add('was-validated')
-        })
-    </script> -->
 </body>
 </html>

@@ -30,7 +30,7 @@
     <title>Reset Password</title>
 </head>
 <body>
-    <div class="bg">
+    <div>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a href="./index.php" class="navbar-brand">
@@ -45,7 +45,13 @@
                     <div class="row">
                         <div class="col-md-6 mx-auto">
                             <label for="security_question" class="alert alert-success"><strong>SECRET QUESTION:</strong> <?= ucfirst($_SESSION['user_question']) ?></label>
-                            <input type="text" placeholder="answer" class="form-control my-3" name="securityAnswer" />
+                            <input 
+                                type="text" 
+                                placeholder="answer" 
+                                class="form-control my-3" 
+                                name="securityAnswer"
+                                autofocus
+                            />
                             <button class="btn btn-success float-end" name="submit">Submit</button>
                         </div>
                     </div>
@@ -53,6 +59,9 @@
             </div>
        </main>
     </div>
+    <?php
+        include "./footer.php";
+    ?>
 </body>
 </html>
 <?php

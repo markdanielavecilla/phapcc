@@ -19,7 +19,7 @@
     <title>Reset Password</title>
 </head>
 <body>
-    <div class="bg">
+    <div>
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
                 <a href="./index.php" class="navbar-brand">
@@ -37,7 +37,8 @@
                                 type="password" 
                                 name="newPassword" 
                                 placeholder="New password" 
-                                class="form-control my-3" 
+                                class="form-control my-3"
+                                autofocus
                             />
                             <button name="updatePassword" class="btn btn-success float-end">Submit</button>
                         </div>
@@ -45,8 +46,10 @@
                 </div>
             </form>
        </main>
-
     </div>
+    <?php
+        include "./footer.php";
+    ?>
 </body>
 </html>
 <?php

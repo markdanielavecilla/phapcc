@@ -2,12 +2,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* font-family: 'Inter', sans-serif;
-    font-family: 'Open Sans', sans-serif; */
 }
 
-body .bg {
+body {
     min-height: 100vh;
+}
+
+.bg {
+    /* height: 50vh; */
     width: 100%;
     background: url('./images/bgm.png') no-repeat center center fixed;
     background-size: cover;
@@ -19,6 +21,14 @@ body .bg {
         to right,
         rgba(208, 210, 214, 0.6),
         rgba(78, 189, 245, 0.8)
+    );
+}
+
+.bg-dark {
+    background: linear-gradient(
+        to right,
+        rgba(78, 189, 245, 0.8),
+        rgba(208, 210, 214, 0.6)
     );
 }
 
@@ -134,4 +144,18 @@ nav:has(.nav-link) {
 
 #imgDisplay {
     width: 125px;
+}
+
+.footer-link {
+    text-decoration: none;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.footer-link:hover {
+    color: #fff;
+}
+
+.register {
+    background: #fff;
 }

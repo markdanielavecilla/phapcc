@@ -41,7 +41,7 @@
         </div>
     </nav>
 
-    <section>
+    <section class="register my-3">
         <form method="POST" autocomplete="off">
             <div class="mt-2 container">
                 <?php
@@ -326,11 +326,15 @@
                 </div>
                 <button 
                     type="submit" 
-                    name="register" 
-                    class="body-btn">Register</button>
+                    name="register"
+                    class="body-btn mb-3">Register</button>
             </div>
         </form>
     </section>
+
+    <?php
+        include "./footer.php";
+    ?>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>

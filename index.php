@@ -18,7 +18,6 @@
     <title>PHA Members</title>
 </head>
 <body>
-
     <div class="bg">
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container">
@@ -38,6 +37,9 @@
                 </div>
             </div>
         </section>
+        <?php
+        include "./footer.php";
+        ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>

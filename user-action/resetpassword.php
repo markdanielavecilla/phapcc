@@ -13,7 +13,5 @@
         unset($_SESSION['user_question']);
         unset($_SESSION['user_answer']);
         header("Location: ./index.php");
-    } else {
-        echo "<script>window.location.href='index.php'</script>";
-    }
+    } 
 ?>
