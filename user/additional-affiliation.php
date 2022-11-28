@@ -92,7 +92,7 @@
                         </div>
 
                         <button 
-                            class="btn btn-success" 
+                            class="btn btn-success float-end" 
                             name="save_additionalAffiliation"
                         >Save</button>
                     </div>
@@ -100,6 +100,9 @@
             </div>
         </form>
     </section>
+    <?php
+        include "../footer.php";
+    ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
