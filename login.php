@@ -3,6 +3,11 @@
 ?>
 
 <div class="card p-3">
+    <div class="row mx-auto">
+        <div class="col">
+            <h1>Login</h1>
+        </div>
+    </div>
     <div class="card-body">
         <form method="post">
             <?php

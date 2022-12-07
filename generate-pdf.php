@@ -2,7 +2,7 @@
     require __DIR__ . "/vendor/autoload.php";
 
     // DATABASE CONNECTION
-    require_once "./connection./connection.php";
+    require_once "./connection/connection.php";
 
     // ID OF USER
     $user_id = $_GET['id'];

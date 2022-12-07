@@ -1,9 +1,10 @@
 <?php
     session_start();
     if(!isset($_SESSION['admin_auth'])) {
-        header("Location: ../index.php");
+        header("Location: ./index.php");
     }
     require_once "./admin-action/view-user.php";
+    print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +12,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/css/bootstrap-select.min.css"/>
     <title>User view</title>
 </head>
 <body>
@@ -35,7 +38,12 @@
                         <div class="container">
                             <div class="row my-4">
                                 <div class="col-md-4">
-                                    <img src="../images/uploads/<?= $userRow['image_url'] ? $userRow['image_url'] : 'default-img.png' ?>" alt="<?= $infoRow['image_url'] ?>" class="profile_img" width="250px">
+                                    <img 
+                                        src="../images/uploads/<?= $userRow['image_url'] ? $userRow['image_url'] : 'default-img.png' ?>" 
+                                        alt="<?= $userRow['image_url'] ?>" class="profile_img" 
+                                        width="250px"
+                                        class="profile_img"
+                                    >
                                 </div>
 
                                 <div class="col-md-4">
@@ -102,9 +110,9 @@
                 <!-- MEDICAL & TRAINING INSTITUTION -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#school">Medical School & Training Institution</button>
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#school">Medical School & Training Institution</button>
                     </h2>
-                    <div class="accordion collapse collapse" id="school">
+                    <div class="accordion collapse collapse show" id="school">
                         <div class="container">
                             <div class="row my-2">
                                 <div class="col-md-6">
@@ -132,7 +140,7 @@
                             </div>
                             <div class="row my-3">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary float-end">Update</a>
+                                    <a href="./update-medical-training.php?id=<?= $userRow['id'] ?>" class="btn btn-primary float-end">Update</a>
                                 </div>
                             </div>
                         </div>
@@ -141,9 +149,9 @@
                 <!-- AFFILIATION -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#affiliation">Affiliation</button>
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#affiliation">Affiliation</button>
                     </h2>
-                    <div class="accordion collapse collapse" id="affiliation">
+                    <div class="accordion collapse collapse show" id="affiliation">
                         <div class="container">
                             <div class="row my-3">
                                 <div class="col-md-4">
@@ -254,13 +262,13 @@
                 </div>
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#otherAffiliation">Other Affiliation</button>
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#otherAffiliation">Other Affiliation</button>
                     </h2>
-                    <div class="accordion collapse collapse" id="otherAffiliation">
+                    <div class="accordion collapse collapse show" id="otherAffiliation">
                         <div class="container">
                             <div class="row my-3">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary float-end">Add</a>
+                                    <a href="./add-affiliation.php?id=<?= $userRow['id'] ?>" class="btn btn-primary float-end">Add</a>
                                 </div>
                             </div>
 
@@ -283,8 +291,8 @@
                                                 <td><?= $infoRow['hospital_aff'] ?></td>
                                                 <td><?= $infoRow['contact'] ?></td>
                                                 <td><?= $infoRow['landline'] ?></td>
-                                                <td><a href="#" class="btn btn-success btn-sm">Edit</a>
-                                                <a href="#" class="btn btn-danger btn-sm">Delete</a></td>
+                                                <td><a href="./update-additional-affiliation.php?id=<?= $infoRow['id'] ?>" class="btn btn-success btn-sm">Edit</a>
+                                                <a href="./delete-additional-affiliation.php?id=<?= $infoRow['id'] ?>" class="btn btn-danger btn-sm">Delete</a></td>
                                             </tr>
                                             <?php endwhile; ?>
                                         </tbody>
@@ -297,11 +305,11 @@
                 <!-- YEAR AS -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#year_as">
+                        <button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#year_as">
                             Year as
                         </button>
                     </h2>
-                    <div class="accordion collapse collapse" id="year_as">
+                    <div class="accordion collapse collapse show" id="year_as">
                         <div class="container">
                             <div class="row my-3">
                                 <div class="col">
@@ -333,18 +341,119 @@
                         </div>
                     </div>
                 </div>
-                <!-- FILES -->
+                <!-- BENEFICIARIES -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#user_other">Files</button>
+                        <button 
+                            class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#beneficiaries"
+                        >
+                            Beneficiaries
+                        </button>
                     </h2>
-                    <div class="accordion collapse collapse" id="user_other">
+                    <div class="accordion collapse collapse show" id="beneficiaries">
                         <div class="container">
-                            <div class="row my-2">
+                            <div class="row my-3">
                                 <div class="col">
-                                    <p class="text-capitalize">
-                                        <strong>Files:</strong> Files here
-                                    </p>
+                                    <a 
+                                        href="#"
+                                        class="btn btn-primary btn-sm float-end"
+                                    >Add</a>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                while($rowBeneficiaries = $resultBeneficiaries->fetch_assoc()) :
+                                                    if($rowBeneficiaries) :
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $rowBeneficiaries['ben_first_name'] ?>
+                                                    <?= $rowBeneficiaries['ben_middle_name'] ?>
+                                                    <?= $rowBeneficiaries['ben_last_name'] ?>
+                                                    <?= $rowBeneficiaries['ben_suffix'] ? $rowBeneficiaries['ben_suffix'].'.' : '' ?>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                                    endif;
+                                                endwhile;
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CONTACT PERSON IN CASE OF EMERGENCY -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button
+                            class="accordion-button"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#contact_person"
+                        >
+                            Contact person in case of emergency
+                        </button>
+                    </h2>
+                    <div class="accordion collapse collapse show" id="contact_person">
+                        <div class="container">
+                            <div class="row my-3">
+                                <div class="col">
+                                    <a href="#" class="btn btn-primary btn-sm float-end">Add</a>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Mobile number</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                while($rowCp = $resultCp->fetch_assoc()) :
+                                                    if($rowCp) :
+                                            ?>
+                                            <tr>
+                                                <td>
+                                                    <?= $cpRow['cp_first_name'] ?>
+                                                    <?= $cpRow['cp_middle_name'] ?>
+                                                    <?= $cpRow['cp_last_name'] ?>
+                                                </td>
+                                                <td>
+                                                    <?= $cpRow['cp_mobile_number'] ?>
+                                                </td>
+                                                <td>
+                                                    <a href="#" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php
+                                                    endif;
+                                                endwhile;
+                                            ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -353,6 +462,7 @@
             </div>
         </div>
     </main>
-    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

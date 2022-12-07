@@ -349,7 +349,7 @@
                     }
                 } else {
                     $flag = false;
-                    $imageError = "There is an error uploading the file";
+                    $imageError = "There is an error uploading the image";
                     $errors[] = $imageError;
                 }
             } else {

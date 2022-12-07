@@ -1,6 +1,8 @@
 <?php
     require_once "./includes/connection.php";
     $user_id = $_GET['id'];
+    $_SESSION['admin_user_id'] = $user_id;
+    $active_status = 0;
 
     // INFORMATION
     $userInfo = $conn->prepare("SELECT * FROM tbl_information WHERE id = ?");
@@ -134,8 +136,8 @@
     $otherChapter->close();
 
     // EXTRA INFO
-    $otherInfo = $conn->prepare("SELECT id, hospital_aff, contact, landline FROM tbl_extrainformation WHERE doctors_id = ? order by id desc");
-    $otherInfo->bind_param("i", $user_id);
+    $otherInfo = $conn->prepare("SELECT id, hospital_aff, contact, landline FROM tbl_extrainformation WHERE doctors_id = ? and status = ? order by id desc");
+    $otherInfo->bind_param("ii", $user_id, $active_status);
     $otherInfo->execute();
     $otherInfoResult = $otherInfo->get_result();
     $otherInfo->close();
@@ -147,4 +149,18 @@
     $yearResult = $year->get_result();
     $yearRow = $yearResult->fetch_assoc();
     $year->close();
+
+    // BENEFICIARIES
+    $beneficiaries = $conn->prepare("SELECT * from tbl_beneficiaries where dr_id = ?");
+    $beneficiaries->bind_param("i", $user_id);
+    $beneficiaries->execute();
+    $resultBeneficiaries = $beneficiaries->get_result();
+    $beneficiaries->close();
+
+    // CONTACT PERSON
+    $cp = $conn->prepare("SELECT * from tbl_contact_person where dr_id = ?");
+    $cp->bind_param("i", $user_id);
+    $cp->execute();
+    $resultCp = $cp->get_result();
+    $cp->close();
 ?>

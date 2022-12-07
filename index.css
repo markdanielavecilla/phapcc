@@ -34,6 +34,7 @@ body {
 
 a {
     color: #000;
+    text-decoration: none;
 }
 
 nav:has(.nav-link) {
