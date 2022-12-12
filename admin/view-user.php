@@ -4,7 +4,6 @@
         header("Location: ./index.php");
     }
     require_once "./admin-action/view-user.php";
-    print_r($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -335,7 +334,7 @@
                             </div>
                             <div class="row my-2">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary float-end">Update</a>
+                                    <a href="./update-year.php?id=<?= $userRow['id'] ?>" class="btn btn-primary float-end">Update</a>
                                 </div>
                             </div>
                         </div>
@@ -358,7 +357,7 @@
                             <div class="row my-3">
                                 <div class="col">
                                     <a 
-                                        href="#"
+                                        href="./add-beneficiary.php?id=<?= $userRow['id'] ?>"
                                         class="btn btn-primary btn-sm float-end"
                                     >Add</a>
                                 </div>
@@ -385,7 +384,7 @@
                                                     <?= $rowBeneficiaries['ben_suffix'] ? $rowBeneficiaries['ben_suffix'].'.' : '' ?>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="./update-beneficiary.php?id=<?= $rowBeneficiaries['ben_id'] ?>" class="btn btn-success btn-sm">Edit</a>
                                                     <a href="#" class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>

@@ -1,12 +1,12 @@
 <?php
-    session_start();
-    require_once "../connection/connection.php";
-    $USER_ID = $_GET['id'];
+    require_once "./includes/connection.php";
+    $user_id = $_GET['id'];
 
+    // SAVE BENEFICIARY
     $errFname = $errMidName = $errLname = $errSuffix = "";
-    if(isset($_POST['addBeneficiaries'])) {
+    $errors = array();
+    if(isset($_POST['save'])) {
         $STRING_CHECKER = "/^[a-zA-Z\s\-\.]*$/";
-        $error = array();
         $flag = true;
         $status = 0;
 
@@ -15,7 +15,7 @@
         $lastName = $conn->real_escape_string($_POST['last_name']);
         $suffix = $conn->real_escape_string($_POST['suffix']);
 
-        // VALIDATION
+        // VALIDATE
         if(empty($firstName)) {
             $flag = false;
             $errFname = "First name is required";
@@ -60,16 +60,19 @@
             }
         }
 
-        if($flag === false && count($error) > 0) {
-            $_SESSION['client_message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
-        } else {
-            $stmt = $conn->prepare("INSERT INTO tbl_beneficiaries (dr_id, ben_first_name, ben_middle_name, ben_last_name, ben_suffix, status) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->bind_param("issssi", $user_id, $firstName, $middleName, $lastName, $suffix, $status);
-            $stmt->execute();
-            $stmt->close();
-            $_SESSION['client_message'] = "<div class='alert alert-success'>Data added successfully.</div>";
-            $_POST = array();
-            header("location: ./profile.php?id=$USER_ID#beneficiaries");
+        if($flag) {
+            if(count($errors) > 0) {
+                $_SESSION['message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
+                return;
+            } else {
+                $addBeneficiary = $conn->prepare("INSERT INTO tbl_beneficiaries (dr_id, ben_first_name, ben_middle_name, ben_last_name, ben_suffix, status) VALUES (?, ?, ?, ?, ?, ?)");
+                $addBeneficiary->bind_param("issssi", $USER_ID, $firstName, $middleName, $lastName, $suffix, $status);
+                $addBeneficiary->execute();
+                $addBeneficiary->close();
+                $_SESSION['message'] = "<div class='alert alert-success'>Data added successfully.</div>";
+                $_POST = array();
+                header("Location: ./view-user.php?id=$user_id#beneficiaries");
+            }
         }
     }
 ?>
