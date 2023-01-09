@@ -68,7 +68,7 @@
                 $_SESSION[' client_message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
                 return;
             } else {
-                header("Location: ../user/profile.php?id".$USER_ID);
+                header("Location: ../user/profile.php?id".$USER_ID."#other_affiliation");
                 return;
             }
         }

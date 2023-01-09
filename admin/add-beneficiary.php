@@ -26,8 +26,8 @@
                 <h2 class="mt-3">
                     Add Beneficiary
                     <a href="./view-user.php?id=<?= $user_id ?>#beneficiaries" class="btn btn-outline-danger float-end">
-                    <i class="fa fa-arrow-left" aria-hidden="true"></i>
-                </a>
+                        <i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    </a>
                 </h2>
                 <hr/>
                 <?php

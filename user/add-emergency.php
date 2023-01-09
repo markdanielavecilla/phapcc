@@ -1,5 +1,12 @@
 <?php
     require_once "../user-action/add-emergency.php";
+    if(isset($_POST['auth']) && isset($_SESSION['user_id'])) {
+        header("Location: ./profile.php?id=".$_SESSION['user_id']);
+        exit();
+    } else if(!isset($_SESSION['auth']) && !isset($_SESSION['user_id'])) {
+        header("Location: ../index.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +40,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">Change password</a>
+                                <a href="./change-password.php?id=<?= $_SESSION['user_id'] ?>" class="dropdown-item">Change password</a>
                             </li>
                             <li>
                                 <a href="./logout.php" class="dropdown-item">Logout</a>

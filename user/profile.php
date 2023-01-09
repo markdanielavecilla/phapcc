@@ -356,7 +356,7 @@
                             <div class="row mb-2 mt-3">
                                 <div class="col">
                                     <a
-                                        href="./additional-affiliation.php?id=<?= $_SESSION['user_id'] ?>"
+                                        href="./additional-affiliation.php"
                                         class="small-button float-end"
                                     >Add</a>
                                 </div>

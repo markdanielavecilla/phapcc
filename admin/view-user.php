@@ -253,7 +253,7 @@
                             </div>
                             <div class="row my-2">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary float-end">Update</a>
+                                    <a href="./update-affiliation.php?id=<?= $userRow['id'] ?>" class="btn btn-primary float-end">Update</a>
                                 </div>
                             </div>
                         </div>
@@ -385,7 +385,7 @@
                                                 </td>
                                                 <td>
                                                     <a href="./update-beneficiary.php?id=<?= $rowBeneficiaries['ben_id'] ?>" class="btn btn-success btn-sm">Edit</a>
-                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                    <a href="./delete-beneficiary.php?id=<?= $rowBeneficiaries['ben_id'] ?>" name="delete-ben" class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                             <?php
@@ -415,7 +415,7 @@
                         <div class="container">
                             <div class="row my-3">
                                 <div class="col">
-                                    <a href="#" class="btn btn-primary btn-sm float-end">Add</a>
+                                    <a href="./add-contact-person.php?id=<?= $userRow['id'] ?>" class="btn btn-primary btn-sm float-end">Add</a>
                                 </div>
                             </div>
                             <div class="row mt-2">
@@ -435,16 +435,16 @@
                                             ?>
                                             <tr>
                                                 <td>
-                                                    <?= $cpRow['cp_first_name'] ?>
-                                                    <?= $cpRow['cp_middle_name'] ?>
-                                                    <?= $cpRow['cp_last_name'] ?>
+                                                    <?= $rowCp['cp_first_name'] ?>
+                                                    <?= $rowCp['cp_middle_name'] ?>
+                                                    <?= $rowCp['cp_last_name'] ?>
                                                 </td>
                                                 <td>
-                                                    <?= $cpRow['cp_mobile_number'] ?>
+                                                    <?= $rowCp['cp_mobile_number'] ?>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class="btn btn-success btn-sm">Edit</a>
-                                                    <a href="#" class="btn btn-danger btn-sm">Delete</a>
+                                                    <a href="./update-contact-person.php?id=<?= $rowCp['cp_id'] ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <a href="./delete-contact-person.php?id=<?= $rowCp['cp_id'] ?>" class="btn btn-danger btn-sm">Delete</a>
                                                 </td>
                                             </tr>
                                             <?php

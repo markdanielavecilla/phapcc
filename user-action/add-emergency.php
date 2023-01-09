@@ -8,7 +8,7 @@
         $STRING_CHECKER = "/^[a-zA-Z\s\-\.]*$/";
         $INT_CHECKER = "/^((09)[0-9]{9})*$/";
         $error = array();
-        $flag = false;
+        $flag = true;
         $status = 0;
 
         $firstName = $conn->real_escape_string($_POST['first_name']);

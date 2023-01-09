@@ -33,7 +33,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">Change password</a>
+                                <a href="./change-password.php?id=<?= $_SESSION['user_id'] ?>" class="dropdown-item">Change password</a>
                             </li>
                             <li>
                                 <a href="./logout.php" class="dropdown-item">Logout</a>
@@ -60,46 +60,50 @@
                         <div class="form-floating my-2">
                             <input 
                                 type="text" 
-                                class="form-control"
+                                class="form-control <?= $errFname ? 'is-invalid' : '' ?>"
                                 name="first_name"
                                 placeholder="First name"
                                 value="<?= isset($_POST['first_name']) ? $_POST['first_name'] : $row['ben_first_name'] ?>"
                             />
                             <label for="first_name">First name</label>
+                            <span class="invalid-feedback"><?= $errFname ?></span>
                         </div>
 
                         <div class="form-floating my-2">
                             <input 
                                 type="text" 
-                                class="form-control"
+                                class="form-control <?= $errMidName ? 'is-invalid' : '' ?>"
                                 name="middle_name"
                                 placeholder="Middle name"
                                 value="<?= isset($_POST['middle_name']) ? $_POST['middle_name'] : $row['ben_middle_name'] ?>"
                             />
                             <label for="middle_name">Middle name</label>
+                            <span class="invalid-feedback"><?= $errMidName ?></span>
                         </div>
 
                         <div class="form-floating my-2">
                             <input 
                                 type="text" 
-                                class="form-control"
+                                class="form-control <?= $errLname ? 'is-invalid' : '' ?>"
                                 name="last_name"
                                 placeholder="Last name"
                                 value="<?= isset($_POST['last_name']) ? $_POST['last_name'] : $row['ben_last_name'] ?>"
                             />
                             <label for="last_name">Last name</label>
+                            <span class="invalid-feedback"><?= $errLname ?></span>
                         </div>
 
                         <div class="form-floating my-2">
                             <input 
                                 type="text" 
-                                class="form-control"
+                                class="form-control <?= $errSuffix ? 'is-invalid' : '' ?>"
                                 name="suffix"
                                 placeholder="suffix"
                                 value="<?= isset($_POST['suffix']) ? $_POST['suffix'] : $row['ben_suffix'] ?>"
                             />
                             <label for="suffix">Suffix</label>
                         </div>
+                        <span class="invalid-feedback"><?= $errSuffix ?></span>
 
                         <button class="btn btn-success float-end" name="updateBeneficiaries">Save</button>
                     </div>

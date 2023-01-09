@@ -43,7 +43,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">Change password</a>
+                                <a href="./change-password.php?id=<?= $_SESSION['user_id'] ?>" class="dropdown-item">Change password</a>
                             </li>
                             <li>
                                 <a href="./logout.php" class="dropdown-item">Logout</a>
@@ -301,7 +301,6 @@
                         <span class="invalid-feedback"><?= $errOtherSpec ?></span>
                         <span class="small"><strong>Note:</strong> If more than one special training, put comma (,) to separate it. (e.g. MD, FPCP, etc...)</span>
                     </div>
-
                 </div>
 
                 <!-- PRACTICE -->

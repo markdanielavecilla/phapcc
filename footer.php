@@ -9,11 +9,18 @@
             <div class="col-md-4 col-lg-4 col-xl-4 mt-3 mx-auto">
                 <h5 class="text-uppercase mb-4 font-weight-bold text-warning">Contact</h5>
                 <p>
-                    <i class="fa-solid fa-phone mx-2"></i> <span>
+                    <i class="fa-solid fa-phone mx-2"></i> 
+                    <span>
                         +63 2 8470-5525, 
-                        8470-5528, 
-                        +63 2 8687-7797
+                        8470-5528
+                        
                     </span>
+                </p>
+                <p>
+                    <i class="fa-solid fa-fax mx-2"></i>
+                        <span>
+                            +63 2 8687-7797
+                        </span>
                 </p>
                 <p>
                     <i class="fa-solid fa-globe mx-2"></i> <a class="footer-link" href="http://www.philheart.org">http://www.philheart.org</a>

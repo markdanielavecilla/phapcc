@@ -1,5 +1,12 @@
 <?php
     require_once "../user-action/additional-affiliation-action.php";
+    if(isset($_POST['auth']) && isset($_SESSION['user_id'])) {
+        header("Location: ./profile.php?id=".$_SESSION['user_id']);
+        exit();
+    } else if(!isset($_SESSION['auth']) && !isset($_SESSION['user_id'])) {
+        header("Location: ../index.php");
+        exit();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,13 +34,13 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbar">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a href="./profile.php?id=<?= $_GET['id'] ?>" class="nav-link">Profile</a>
+                        <a href="./profile.php?id=<?= $_SESSION['user_id'] ?>" class="nav-link">Profile</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">Change password</a>
+                                <a href="./change-password.php?id=<?= $_SESSION['user_id'] ?>" class="dropdown-item">Change password</a>
                             </li>
                             <li>
                                 <a href="./logout.php" class="dropdown-item">Logout</a>
@@ -64,6 +71,7 @@
                                 name="add_affiliation"
                                 class="form-control <?= $errAddAffiliation ? 'is-invalid' : '' ?>"
                                 placeholder="Hospital affiliation"
+                                value="<?= isset($_POST['add_affiliation']) ? $_POST['add_affiliation'] : '' ?>"
                             />
                             <label for="hospital_affiliation">Hospital affiliation</label>
                             <span class="invalid-feedback"><?= $errAddAffiliation ?></span>
@@ -75,6 +83,8 @@
                                 name="add_contact_number"
                                 class="form-control <?= $errAddContact ? 'is-invalid' : '' ?>"
                                 placeholder="Contact number"
+                                value="<?= isset($_POST['add_contact_number']) ? $_POST['add_contact_number'] : '' ?>"
+                                
                             />
                             <label for="contact_number">Contact number</label>
                             <span class="invalid-feedback"><?= $errAddContact ?></span>
@@ -86,6 +96,7 @@
                                 name="add_landline"
                                 class="form-control <?= $errAddLandline ? 'is-invalid' : '' ?>"
                                 placeholder="Landline number"
+                                value="<?= isset($_POST['add_landline']) ? $_POST['add_landline'] : '' ?>"
                             />
                             <label for="add_landline">Landline number</label>
                             <span class="invalid-feedback"><?= $errAddLandline ?></span>

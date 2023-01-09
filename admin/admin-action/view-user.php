@@ -151,15 +151,15 @@
     $year->close();
 
     // BENEFICIARIES
-    $beneficiaries = $conn->prepare("SELECT * from tbl_beneficiaries where dr_id = ?");
-    $beneficiaries->bind_param("i", $user_id);
+    $beneficiaries = $conn->prepare("SELECT * from tbl_beneficiaries where dr_id = ? AND status = ?");
+    $beneficiaries->bind_param("ii", $user_id, $active_status);
     $beneficiaries->execute();
     $resultBeneficiaries = $beneficiaries->get_result();
     $beneficiaries->close();
 
     // CONTACT PERSON
-    $cp = $conn->prepare("SELECT * from tbl_contact_person where dr_id = ?");
-    $cp->bind_param("i", $user_id);
+    $cp = $conn->prepare("SELECT * from tbl_contact_person where dr_id = ? and status = ?");
+    $cp->bind_param("ii", $user_id, $active_status);
     $cp->execute();
     $resultCp = $cp->get_result();
     $cp->close();

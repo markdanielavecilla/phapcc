@@ -319,7 +319,7 @@
                                 class="form-check-input <?= $errChkBx ? 'is-invalid':'' ?>"
                                 value="1"
                             />
-                            <label for="agree">I have read and understand the <a href="policy.php">Policy</a></label>
+                            <label for="agree">I have read and agree to the <a href="policy.php" target="_blank">Policy</a></label>
                             <span class="invalid-feedback"><?= $errChkBx ?></span>
                         </div>
                     </div>

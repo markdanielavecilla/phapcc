@@ -52,7 +52,7 @@
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Account</a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">Change password</a>
+                                <a href="./change-password.php?id=<?= $_SESSION['user_id'] ?>" class="dropdown-item">Change password</a>
                             </li>
                             <li>
                                 <a href="./logout.php" class="dropdown-item">Logout</a>
@@ -72,7 +72,12 @@
             <div class="container">
                 <h2 class="mt-4">Medical School & Training Institution</h2>
                 <hr/>
-
+                <?php
+                    if(isset($_SESSION['client_message'])) {
+                        echo $_SESSION['client_message'];
+                        unset($_SESSION['client_message']);
+                    }
+                ?>
                 <!-- MEDICAL SCHOOL -->
                 <div class="row mt-3 mb-3">
                     <div class="col-md-6">

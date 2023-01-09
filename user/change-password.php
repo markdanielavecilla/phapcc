@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require_once "../user-action/changepassword.php";
     if(isset($_POST['auth']) && isset($_SESSION['user_id'])) {
         header("Location: ./profile.php?id=".$_SESSION['user_id']);
         exit();
@@ -7,7 +8,6 @@
         header("Location: ../index.php");
         exit();
     }
-    require_once "../user-action/changepassword.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

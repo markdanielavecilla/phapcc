@@ -72,7 +72,8 @@
 
         if($flag) {
             if(count($errors) > 0) {
-                print_r($errors);
+                $_SESSION['client_message'] = "<div class='alert alert-danger'>Failed to update. Please check your data input to the field</div>";
+                return;
             } else {
                 $conn->autocommit(false);
 
@@ -84,12 +85,13 @@
                     $conn->rollback();
                     exit();
                 } else {
-                    header("Location: ./profile.php?id=$USER_ID");
+                    header("Location: ./profile.php?id=$USER_ID#school");
                 }
 
             }
-        } else {    
-            print_r($errors);
+        } else {
+            $_SESSION['client_message'] = "<div class='alert alert-danger'>Failed to update. Please check your data input to the field</div>";
+            return;
         }
 
     }

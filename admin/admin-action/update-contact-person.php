@@ -1,18 +1,24 @@
 <?php
-    session_start();
-    require_once  "../connection/connection.php";
-    $EMERGENCY_ID = $_GET['id'];
-    // GET EMERGENCY CONTACT BY CP_ID
-    $stmt = $conn->prepare("SELECT * FROM tbl_contact_person WHERE cp_id = ?");
-    $stmt->bind_param("i", $EMERGENCY_ID);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $stmt->close();
+    require_once "./includes/connection.php";
+    $cp_id = $_GET['id'];
+    $user_id = $_SESSION['admin_user_id'];
 
-    // UPDATE CONTACT PERSON
+    // GET CONTACT PERSON BASE ON TABLE ID
+    $sql = "SELECT * from tbl_contact_person where cp_id = ? limit 1";
+    if($getContact = $conn->prepare($sql)) {
+        $getContact->bind_param("i", $cp_id);
+        $getContact->execute();
+        $resultContact = $getContact->get_result();
+        $rowContact = $resultContact->fetch_assoc();
+        $getContact->close();
+    } else {
+        $contactError = $conn->errno.' '.$conn->error;
+        $_SESSION['message'] = "<div class='alert alert-danger'>$contactError</div>";
+    }
+
+    // UPDATE contact person
     $errFname = $errMidName = $errLname = $errMobile = "";
-    if(isset($_POST['updateEmergencyContact'])) {
+    if(isset($_POST['save'])) {
         $STRING_CHECKER = "/^[a-zA-Z\s\-\.]*$/";
         $INT_CHECKER = "/^((09)[0-9]{9})*$/";
         $error = array();
@@ -68,14 +74,22 @@
             }
         }
 
-        if($flag === false && count($error) > 0) {
-            $_SESSION['client_message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
-        } else {
-            $stmt = $conn->prepare("UPDATE tbl_contact_person SET cp_first_name = ?, cp_middle_name = ?, cp_last_name = ?, cp_mobile_number = ? WHERE cp_id = ?");
-            $stmt->bind_param("ssssi", $firstName, $middleName, $lastName, $mobile, $EMERGENCY_ID);
-            $stmt->execute();
-            $stmt->close();
-            header("Location: ./profile.php?id=".$_SESSION['user_id']."#contact_person");
+        if($flag) {
+            if(count($error) > 0) {
+                $_SESSION['message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
+                return;
+            } else {
+                $sql = "UPDATE tbl_contact_person SET cp_first_name = ?, cp_middle_name = ?, cp_last_name = ?, cp_mobile_number = ? WHERE cp_id = ? limit 1";
+                if($updateContact = $conn->prepare($sql)) {
+                    $updateContact->bind_param("ssssi", $firstName, $middleName, $lastName, $mobile, $cp_id);
+                    $updateContact->execute();
+                    $updateContact->close();
+                    header("Location: ./view-user.php?id=$user_id#contact_person");
+                } else {
+                    $updateError = $conn->errno.' '.$conn->error;
+                    $_SESSION['message'] = "<div class='alert alert-danger'>$updateError</div>";
+                }
+            }
         }
     }
 ?>

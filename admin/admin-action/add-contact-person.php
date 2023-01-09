@@ -1,22 +1,15 @@
 <?php
-    session_start();
-    require_once  "../connection/connection.php";
-    $EMERGENCY_ID = $_GET['id'];
-    // GET EMERGENCY CONTACT BY CP_ID
-    $stmt = $conn->prepare("SELECT * FROM tbl_contact_person WHERE cp_id = ?");
-    $stmt->bind_param("i", $EMERGENCY_ID);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $stmt->close();
+    require_once "./includes/connection.php";
+    $user_id = $_GET['id'];
 
-    // UPDATE CONTACT PERSON
-    $errFname = $errMidName = $errLname = $errMobile = "";
-    if(isset($_POST['updateEmergencyContact'])) {
+    // Add contact person
+    $errFname = $errMidname = $errLname = $errContact = "";
+    if(isset($_POST['save'])) {
         $STRING_CHECKER = "/^[a-zA-Z\s\-\.]*$/";
         $INT_CHECKER = "/^((09)[0-9]{9})*$/";
         $error = array();
         $flag = true;
+        $status = 0;
 
         $firstName = $conn->real_escape_string($_POST['first_name']);
         $middleName = $conn->real_escape_string($_POST['middle_name']);
@@ -68,14 +61,25 @@
             }
         }
 
-        if($flag === false && count($error) > 0) {
-            $_SESSION['client_message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
+        if($flag) {
+            if(count($error) > 0) {
+                $_SESSION['message'] = "<div class='alert alert-danger'>Failed to insert data.</div>";
+                return;
+            } else {
+                $sql = "INSERT INTO tbl_contact_person (dr_id, cp_first_name, cp_middle_name, cp_last_name, cp_mobile_number, status) VALUES (?, ?, ?, ?, ?, ?)";
+                if($addContact = $conn->prepare($sql)) {
+                    $addContact->bind_param("issssi", $user_id, $firstName, $middleName, $lastName, $mobile, $status);
+                    $addContact->execute();
+                    $addContact->close();
+                    header("Location: ./view-user.php?id=$user_id#contact_person");
+                } else {
+                    $contactError = $conn->errno.' '.$conn->error;
+                    $_SESSION['message'] = "<div class='alert alert-anger'>$contactError</div>";
+                    return;
+                }
+            }
         } else {
-            $stmt = $conn->prepare("UPDATE tbl_contact_person SET cp_first_name = ?, cp_middle_name = ?, cp_last_name = ?, cp_mobile_number = ? WHERE cp_id = ?");
-            $stmt->bind_param("ssssi", $firstName, $middleName, $lastName, $mobile, $EMERGENCY_ID);
-            $stmt->execute();
-            $stmt->close();
-            header("Location: ./profile.php?id=".$_SESSION['user_id']."#contact_person");
+            echo 'Flag false';
         }
     }
 ?>

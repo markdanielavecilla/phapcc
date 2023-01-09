@@ -66,7 +66,7 @@
                 return;
             } else {
                 $addBeneficiary = $conn->prepare("INSERT INTO tbl_beneficiaries (dr_id, ben_first_name, ben_middle_name, ben_last_name, ben_suffix, status) VALUES (?, ?, ?, ?, ?, ?)");
-                $addBeneficiary->bind_param("issssi", $USER_ID, $firstName, $middleName, $lastName, $suffix, $status);
+                $addBeneficiary->bind_param("issssi", $user_id, $firstName, $middleName, $lastName, $suffix, $status);
                 $addBeneficiary->execute();
                 $addBeneficiary->close();
                 $_SESSION['message'] = "<div class='alert alert-success'>Data added successfully.</div>";

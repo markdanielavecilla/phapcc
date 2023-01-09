@@ -47,7 +47,7 @@
     $school->close();
 
     // GET BENEFICIARIES
-    $beneficiaries = $conn->prepare("SELECT * FROM tbl_beneficiaries WHERE ben_id = ?");
+    $beneficiaries = $conn->prepare("SELECT * FROM tbl_beneficiaries WHERE dr_id = ?");
     $beneficiaries->bind_param("i", $user_id);
     $beneficiaries->execute();
     $benResult = $beneficiaries->get_result();
